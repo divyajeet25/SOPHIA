@@ -23,7 +23,7 @@
       🌙/🌞
     </button>
     <div class="container">
-      <section id="Oval" class="mb-4" >
+      <section id="Oval" class="mb-4">
         <div class="row">
           <div class="col-md-1"></div>
           <div
@@ -50,7 +50,7 @@
                   <button id="micBtn" onclick="mic()" class="glow-on-hover">
                     <i class="bi bi-mic"></i>
                   </button>
-                  <button
+                  <button onclick="chat()"
                     id="chatBtn"
                     class="glow-on-hover"
                     data-bs-toggle="offcanvas"
@@ -59,7 +59,7 @@
                   >
                     <i class="bi bi-chat-left-dots"></i>
                   </button>
-                  <button id="settingBtn" class="glow-on-hover">
+                  <button onclick="set()" class="glow-on-hover">
                     <i class="bi bi-sliders2-vertical"></i>
                   </button>
                 </div>
@@ -73,24 +73,14 @@
       <section
         id="SiriWave"
         class="mb-4"
-        style="
-          align-items: center;
-          justify-content: center;
-          display: flex;
-          height: 100vh;
-          
-        "hidden>
-      >
-        <div class="container">
+        style="align-items: center;justify-content: center;display: flex;height: 100vh;">
+        <div class="container" >
           <div class="row">
             <div class="col-md-12">
-              <div
-                class="d-flex justify-content-center align-items-center"
-                style="height: 100vh"
-              >
-                <div>
-                  <h5 class>Hello sir! I am Sophia</h5>
-
+              <div class="SiriWaveform" style="height: 100vh">
+                <div id="inner" hidden>
+                  <h5 class="siri-message">Hello sir! I am Sophia</h5>
+                   
                   <div id="siri-container"></div>
                 </div>
               </div>
@@ -107,17 +97,27 @@
         document.body.classList.toggle("light-theme");
       }
       function mic() {
-        alert("Microphone activated");
-        const s1 = 
-        document.getElementById("Oval");
-        const s2 = 
-        document.getElementById("SiriWave");
+        
+        const s1 = document.getElementById("Oval");
+        const s2 = document.getElementById("inner");
         s1.hidden = true;
         s2.hidden = false;
+        eel.playClickSound();
+        eel.takeCommand();
+      }
+      function chat() {
+        eel.playClickSound();
+      }
+      function set() {
+        eel.playClickSound();
       }
     </script>
     <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>
     <script src="main.js"></script>
-    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js" type="text/javascript"></script>
+    <script
+      src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"
+      type="text/javascript"
+    ></script>
+    <script src="controller.js"></script>
   </body>
 </html>
